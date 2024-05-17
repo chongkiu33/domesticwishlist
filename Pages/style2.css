@@ -1,0 +1,199 @@
+
+
+@font-face {
+    font-family: 'tiny280';
+    src: url(../font/TINY5x3-280.otf);
+}
+
+
+span:hover{
+    
+    text-decoration: underline;
+}
+
+
+
+#container{
+    
+    display: flex;
+    padding-left: 1vw;
+    margin-top: 10vh;
+}
+
+#blockText{
+    backdrop-filter: blur(5px);
+    background-color: rgb(255,255,255,0.5);
+    width: 25vw;
+    height:fit-content;
+    
+    border-radius: 0.3em;
+    padding: 1em;
+    
+    float: left;
+    box-shadow: 0 0 15px #5d5c5d;
+    z-index:2;
+}
+
+#canvas-container{
+    
+    float: left;
+    width:fit-content;
+    margin-left: 2vw;
+}
+
+canvas{
+    box-shadow: 0 0 10px #5d5c5d;
+    border-radius: 0.3em;
+    z-index:1;
+
+}
+
+.decro{
+    position: fixed;
+    
+    
+    
+}
+
+#visualContainer{
+    position: absolute;
+}
+
+
+#visualContainer img:hover{
+    animation: moveb 1s;
+}
+
+@keyframes moveb{
+    0% {transform:  translateY(0vmin);}
+    100% {transform: translateY(-1.5vmin);}
+    
+
+    
+}
+
+#sponge{
+    top: 2px;
+    max-width: 200px;
+    height: 6vh;
+    cursor: none;
+    z-index: 999;
+    position: absolute;
+    
+    
+}
+
+#brushgroup{
+    width: auto;
+    
+    padding: 1vw;
+    border-radius: 1em;
+    position: fixed;
+    left: 2vw;
+    bottom: 4vh;
+    box-shadow: 0 0 10px #5a5a5b;
+    backdrop-filter: blur(5px);
+    background-color: rgb(255,255,255,0.3);
+}
+
+#brushgroup img{
+    height: 4vw;
+}
+
+#brushgroup img:hover{
+    transform: scale(110%);
+}
+
+
+#sizecontro{
+    width: 20vw;
+    height: 65vh;
+    backdrop-filter: blur(5px);
+    background-color: rgb(255,255,255,0.3);
+    box-shadow: 0 0 15px #5d5c5d;
+    border-radius: 0.3em;
+    position: fixed;
+    right: 2vw;
+}
+
+.tool{
+    position: absolute;
+}
+
+.tool:hover{
+    scale: 110%;
+}
+
+#submitbutton:hover{
+    scale: 110%;
+}
+
+#uisystem{
+    position: fixed;
+    margin-top: -7vh;
+    margin-left: 1vw;
+    z-index: 999;
+}
+
+button{
+    
+    padding: 0.5em;
+    margin-right: 0.5vw;
+    font-size: 1.1em;
+    font-family: American Typewriter, serif;
+
+    backdrop-filter: blur(5px);
+    background-color: rgba(252, 252, 252, 0.3);
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0 0 15px #5d5c5d;
+    
+}
+
+button:hover{
+    transform: translateY(1vh);
+    transition: 1s;
+}
+
+#productContainer{
+    margin-top: 10vh;
+    
+    width: 98%;
+    height: auto;
+    margin-left: 1vw;
+    
+    
+    
+}
+
+.product{
+    width: 20%;
+    float: left;
+    margin-top: 5vh;
+    
+}
+
+.product:hover{
+    scale: 110%;
+}
+
+.product img{
+    width: 100%;
+    border-radius: 0.3em;
+    box-shadow: 0 0 15px #5d5c5d;
+    
+}
+
+.descri{
+    backdrop-filter: blur(5px);
+    background-color: rgb(255,255,255,0.5);
+    width: 90%;
+    height:12vh;
+    margin-top: 0.5vh;
+    border-radius: 0.3em;
+    padding: 5%;
+    
+    float: left;
+    box-shadow: 0 0 15px #5d5c5d;
+    z-index:2;
+}

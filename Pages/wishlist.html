@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WishList</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<style>
+    body{
+        overflow: auto;
+        background-color: #f3c8ed;
+    }
+
+    
+    
+</style>
+<body>
+    <main>
+        
+        
+        <div id="uisystem">
+            <a href="../index.html"><button >Homepage</button></a>
+            <a href="textEditor.html"><button>Editor</button></a>
+            <button id="export" style="margin-left: 69vw;">ExportPDF</button>
+            <button>Send email</button>
+        </div>
+        <img style="position: fixed;width: 15vw;margin-left: 40vw;margin-top: -8vh;" src="../image/wishlist.png">
+        <div class="fun1">
+            
+        </div>
+        
+
+        <div id="productContainer">
+            <div class="product">
+                <img src="1.png" >
+                <div class="descri">Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware</div>
+            </div>
+
+            <div class="product">
+                <img src="2.png" >
+                <div class="descri">Kawaii Digital Scale Kawaii Kitchen Accessories Kawaii Gifts Pink Kitchen Supplies Cute Kitchen Appliance (pink)</div>
+            </div>
+
+            <div class="product">
+                <img src="3.png" >
+                <div class="descri">KAWAII BUNNY RABBIT STAND UP RICE SHOVEL SPON</div>
+            </div>
+
+            <div class="product">
+                <img src="4.png" >
+                <div class="descri">Vax Air Lift Pet Upright Vacuum Cleaner; Easily converts to a portable, lift out vacuum; Steerable Technology; Pet Tool - UCPESHV1, 1.5 Litre, 850W, Black, Blue, Grey [Energy Class A]
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="5.png" >
+                <div class="descri">Jen kitchen good wife hood household exhaust hood large suction suction kitchen top side double suction range hoods
+                </div>
+            </div>
+            
+        
+
+            <div class="product">
+                <img src="6.png" >
+                <div class="descri">Vacuum cleaner household large suction wireless handheld ultra-quiet carpet pet cat hair mite suction mop all-in-one vacuum cleaner
+                </div>
+            </div>
+            <div class="product" >
+                <img src="7.png" >
+                <div class="descri">The cloud whale J4 intelligent sweeping and mopping all-in-one sweeper big suction does not entangle the hair and light dust collection.
+                </div>
+            </div>
+            <div class="product">
+                <img src="8.png" >
+                <div class="descri">
+                    Dyson Dyson V11 Fluffy Cordless Vacuum Cleaner Large Household Large Suction Mite Removal Home
+                </div>
+            </div>
+            <div class="product">
+                <img src="9.png" >
+                <div class="descri">
+                    Oxy wireless vacuum cleaner home large suction super strong small handheld sweeping suction mopping all-in-one machine cat fur
+                </div>
+            </div>
+            <div class="product">
+                <img src="10.png" >
+                <div class="descri">
+                    Philips vacuum cleaner household small powerful large suction horizontal handheld vacuum cleaner wired flagship store XB2022
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+
+        
+        
+        <div id="container">
+        
+        </div>
+        
+
+       
+
+       
+    </main>
+    <script>
+        document.getElementById('export').addEventListener('click', function() {
+            const productContainer = document.getElementById('productContainer');
+            html2canvas(productContainer, {
+                useCORS: true, // Enable cross-origin images
+                scale: 2 // Increase resolution
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save('download.pdf');
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+            });
+        });
+    </script>
+</body>
+</html>

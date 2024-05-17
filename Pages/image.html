@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片编辑器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <h2>图片编辑器</h2>
+    <!-- <div>
+        <label for="sourceInput">选择图片：</label>
+        <input type="file" id="sourceInput">
+    </div> -->
+    <div>
+        <h3>选择笔刷材质：</h3>
+        <select id="brushSelect">
+            <option value="circle">圆形</option>
+            <option value="square">方形</option>
+            <option value="triangle">三角形</option>
+        </select>
+    </div>
+    
+    <script>
+        let sourceImg;
+        let brushType = 'circle';
+
+        function preload() {
+            // 预加载源图片
+            sourceImg = loadImage('source.png');
+        }
+
+        function setup() {
+            createCanvas(800, 600);
+            image(sourceImg, 0, 0, width, height);
+        }
+
+        function draw() {
+            // 绘制源图片
+            
+
+            // 根据选择的笔刷绘制形状
+            if (mouseIsPressed) {
+                if (brushType === 'circle') {
+                    ellipse(mouseX, mouseY, 20, 20);
+                } else if (brushType === 'square') {
+                    rectMode(CENTER);
+                    rect(mouseX, mouseY, 20, 20);
+                } else if (brushType === 'triangle') {
+                    triangle(mouseX, mouseY - 10, mouseX - 10, mouseY + 10, mouseX + 10, mouseY + 10);
+                }
+            }
+        }
+
+        // 监听图片输入框变化
+        // document.getElementById('sourceInput').addEventListener('change', function (event) {
+        //     const file = event.target.files[0];
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.onload = function (e) {
+        //             sourceImg = loadImage(e.target.result);
+        //         };
+        //         reader.readAsDataURL(file);
+        //     }
+        // });
+
+        // 监听笔刷选择框变化
+        document.getElementById('brushSelect').addEventListener('change', function (event) {
+            brushType = event.target.value;
+        });
+    </script>
+</body>
+</html>
