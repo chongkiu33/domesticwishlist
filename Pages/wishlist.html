@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WishList</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
@@ -16,6 +15,18 @@
         background-color: #f3c8ed;
     }
 
+    @font-face {
+    font-family: 'tiny280';
+    src: url(../font/TINY5x3-280.otf);
+    }
+
+    span{
+        font-family: 'tiny280';
+        font-size: 15pt;
+        color: #ff3be3;
+        filter: blur(1px);
+    }
+
     
     
 </style>
@@ -23,7 +34,7 @@
     <main>
         
         
-        <div id="uisystem">
+        <div  id="uisystem">
             <a href="../index.html"><button >Homepage</button></a>
             <a href="textEditor.html"><button>Editor</button></a>
             <button id="export" style="margin-left: 69vw;">ExportPDF</button>
@@ -38,12 +49,12 @@
         <div id="productContainer">
             <div class="product">
                 <img src="1.png" >
-                <div class="descri">Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware</div>
+                <div class="descri">Kawaii Strawberry Hearts<span> Bowl</span> Cute <span>Ceramic</span> Noodle Fruit Breakfast Salad Rice Dessert Decorative<span> Bowl</span> Korean <span>Kitchen Tableware</span></div>
             </div>
 
             <div class="product">
                 <img src="2.png" >
-                <div class="descri">Kawaii Digital Scale Kawaii Kitchen Accessories Kawaii Gifts Pink Kitchen Supplies Cute Kitchen Appliance (pink)</div>
+                <div class="descri">Kawaii Digital Scale Kawaii <span>Kitchen Accessories</span> Kawaii Gifts Pink <span>Kitchen Supplies</span> Cute Kitchen Appliance (pink)</div>
             </div>
 
             <div class="product">
@@ -111,36 +122,11 @@
        
     </main>
     <script>
-        document.getElementById('export').addEventListener('click', function() {
-            const productContainer = document.getElementById('productContainer');
-            html2canvas(productContainer, {
-                useCORS: true, // Enable cross-origin images
-                scale: 2 // Increase resolution
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const imgWidth = 210; // A4 width in mm
-                const pageHeight = 297; // A4 height in mm
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                let heightLeft = imgHeight;
-                let position = 0;
-
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-
-                while (heightLeft > 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
-
-                pdf.save('download.pdf');
-            }).catch(error => {
-                console.error('Error generating PDF:', error);
-            });
+       document.getElementById('export').addEventListener('click', function() {
+         var element = document.getElementById('productContainer');
+        html2pdf(element);
         });
+        
     </script>
 </body>
 </html>
