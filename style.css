@@ -19,7 +19,7 @@ body{
     display: table-cell;
     
     text-align: center;
-    overflow: auto;
+    overflow: none;
     scroll-behavior: smooth;
     
 }
@@ -57,12 +57,13 @@ button:hover{
 #visualContainer{
     position: fixed;
     width: 100vw;
-    transition: 1s;
+    
     
 }
 
 #visualContainer img{
     position: absolute;
+   
 }
 
 
@@ -109,4 +110,90 @@ button:hover{
     font-family: American Typewriter, serif;
     overflow: scroll;
     
+}
+
+#tool6{
+    width: 18vw;
+    margin-top: -24vh;
+    left: 10vw;
+    animation: movey 4s infinite;
+}
+
+#sponge{
+    width: 9vw;
+    margin-top: 45vh;
+    right: 20vw;
+    animation: rotate 3s infinite;
+}
+
+
+#raindrop{
+    width: 32vw;
+    margin-top: 15vh;
+    left: 10vw;
+    animation: opacitychange 5s infinite;
+}
+
+#toolkit{
+    width: 20vw;
+    margin-top: 50vh;
+    margin-left: 8vw;
+    animation: movex 11s infinite;
+}
+
+@keyframes movey{
+    0%{
+        transform: translateY(0%);
+    }
+
+    50%{
+        transform: translateY(-20%);
+    }
+
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(20deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes opacitychange{
+    0%{
+        opacity: 100%;
+    }
+
+    50%{
+        opacity: 20%;
+    }
+
+    100%{
+        opacity: 100%;
+    }
+}
+
+@keyframes movex{
+    0%{
+        transform: translateX(0%);
+    }
+
+    50%{
+        transform: translateX(30%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
 }

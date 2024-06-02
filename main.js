@@ -13,16 +13,25 @@ function scrollToSection(sectionId) {
     }
 }
 
-document.getElementById('bigdiv').addEventListener('scroll', function() {
+function checkVisualContainerVisibility() {
     const visualContainer = document.getElementById('visualContainer');
     const homepageSection = document.getElementById('homepage');
 
     const rect = homepageSection.getBoundingClientRect();
-    const contentRect = this.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    if (rect.top >= contentRect.top && rect.bottom <= contentRect.bottom) {
+    if (rect.top >= 0 && rect.bottom <= windowHeight) {
+        
         visualContainer.style.display = 'block';
     } else {
+        
         visualContainer.style.display = 'none';
     }
-});
+}
+
+// Listen to clicks on the logo and buttons
+document.getElementById('bigdiv').addEventListener('scroll', checkVisualContainerVisibility);
+window.addEventListener('scroll', checkVisualContainerVisibility);
+
+// Initial check in case the user starts scrolling immediately
+checkVisualContainerVisibility();
