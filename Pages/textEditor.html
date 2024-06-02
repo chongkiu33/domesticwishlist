@@ -14,6 +14,56 @@
     background-attachment:fixed;
     background-size: cover;
 }
+
+.tool{
+    position: absolute;
+    margin: 1vw;
+    transition: filter 0.3s;
+}
+
+.tool:hover{
+    scale: 110%;
+    
+}
+
+
+.tool:hover .overlay {
+    opacity: 1;
+}
+
+.overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-80%, -50%);
+            color: white;
+            font-size: 1.4vw;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+
+        button{
+    
+    padding: 0.5em;
+    margin-right: 0.5vw;
+    font-size: 1.1em;
+    font-family: American Typewriter, serif;
+
+    backdrop-filter: blur(5px);
+    background-color: rgba(252, 252, 252, 0.3);
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0 0 15px #5d5c5d;
+    
+}
+
+button:hover{
+    transform: translateY(1vh);
+    transition: 1s;
+}
 </style>
 <body>
     <main>
@@ -57,9 +107,22 @@
         </div>
         
         <div id="sizecontro">
-            <img class="tool" id="size2"  style="width: 9vw;margin-left: 1vw;" src="../image/too1.png">
-            <img class="tool" id="size4"  style="width: 12vw;margin-left: 5vw;margin-top: 12vh;" src="../image/too2.png">
-            <img class="tool" id="size1"  style="width: 5vw;margin-left: 12vw;transform: rotate(-50deg);margin-top: -4vh;" src="../image/too4.png">
+            <div class="tool" id="size2"  style="width: 9vw;margin-left: 1vw;">
+                <img style="width: 100%;" src="../image/too1.png">
+                <div class="overlay">Size2</div>
+            </div>
+            
+            <div class="tool" id="size4"  style="width: 12vw;margin-left: 5vw;margin-top: 12vh;">
+            <img style="width: 100%;" src="../image/too2.png">
+            <div class="overlay">Size4</div>
+            </div>
+
+            <div class="tool" id="size1"  style="width: 5vw;margin-left: 12vw;transform: rotate(-50deg);margin-top: -4vh;">
+                <img style="width: 100%;"  src="../image/too4.png">
+                <div class="overlay">Size1</div>
+            </div>
+            
+            
             <img class="tool" id="size5" style="width: 12vw;margin-left: 8vw;margin-top: 32vh;" src="../image/too5.png">
             <img class="tool" id="tower"  style="width: 13vw;margin-left: 1vw;margin-top: 40vh;" src="../image/too3.png">
         </div>
@@ -69,7 +132,8 @@
         <div id="container">
         <div id="blockText">
         </div>
-        <div id="canvas-container"></div>
+        <div id="canvas-container">
+        </div>
         
         </div>
 
