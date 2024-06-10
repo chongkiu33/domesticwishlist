@@ -103,7 +103,7 @@
     #container{
         display: flex;
         align-items: flex-end; 
-        margin-top: 4vh;
+        margin-top: 2vh;
     }
 
     #productcontainer{
@@ -178,69 +178,79 @@
         height: 20vh;
     }
 
+    #slider1{
+    width: 60%;
+    transform: translate(0,-200%);
     
-.slider {
-  -webkit-appearance: none;
-  width: 110%;
-  margin-left: -5%;
-  bottom: -4vh;
-  height: 14px;
-  border-radius: 1em;
-  background: #fdfafa;
-  outline: none;
-  opacity: 1;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  transform: rotate(-16deg);
-  box-shadow: #5d5c5d 0 0 5px inset;
-  
-}
+    }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 35px;
-  border-radius: 20%;
-  background: #8fb2de;
-  cursor: pointer;
-  box-shadow: #424142 0 0 5px inset;
-}
+    #slider2{
+    width: 100%;
+    margin-left: -3%;
+    transform: rotate(-16deg);
+    }
+    
+    .slider {
+    -webkit-appearance: none;
+    
+    bottom: -4vh;
+    height: 14px;
+    border-radius: 1em;
+    background: #fdfafa;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    
+    box-shadow: #5d5c5d 0 0 5px inset;
+    
+    }
 
-.slider::-moz-range-thumb {
-  width: 40px;
-  height: 20px;
-  border-radius: 20%;
-  background: #4CAF50;
-  cursor: pointer;
-}
+    .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 35px;
+    border-radius: 20%;
+    background: #8fb2de;
+    cursor: pointer;
+    box-shadow: #424142 0 0 5px inset;
+    }
 
-.slider::-ms-thumb {
-  width: 20px;
-  height: 60px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
-}
+    .slider::-moz-range-thumb {
+    width: 40px;
+    height: 20px;
+    border-radius: 20%;
+    background: #4CAF50;
+    cursor: pointer;
+    }
 
-#controlPart{
-    position: fixed;
-    top:20vh;
-    right: 1vw;
-    width: 24vw;
-}
-   
-#sizecontro{
-    width: 24vw;
-    height: 65vh;
-    backdrop-filter: blur(5px);
-    background: linear-gradient(to right, rgba(238, 238, 238, 0.4) 0%, rgba(255, 255, 122, 0.8) 80%);
-    box-shadow: 0 0 15px #5d5c5d;
-    border-radius: 0.3em;
-    position: fixed;
-    right: 1vw;
-    bottom:1vw
-}
+    .slider::-ms-thumb {
+    width: 20px;
+    height: 60px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+    }
+
+    #controlPart{
+        position: fixed;
+        top:17vh;
+        right: 1vw;
+        width: 24vw;
+    }
+    
+    #sizecontro{
+        width: 24vw;
+        height: 65vh;
+        backdrop-filter: blur(5px);
+        background: linear-gradient(to right, rgba(238, 238, 238, 0.4) 0%, rgba(255, 255, 122, 0.8) 80%);
+        box-shadow: 0 0 15px #5d5c5d;
+        border-radius: 0.3em;
+        position: fixed;
+        right: 1vw;
+        bottom:2vh;
+    }
 
 #cleanCanvas{
     z-index: 999;
@@ -286,14 +296,15 @@
     </div>
 
     <div id="controlPart">
-    <input type="range" min="0" max="10" value="7" class="slider">
+    <input id="slider1" type="range" min="0" max="10" value="7" class="slider">
+    <input id="slider2" type="range" min="0" max="10" value="7" class="slider">
     <img id="submitbutton"style="width: 16vw;margin-left:9vw;" src="../image/submit.png">
     </div>
 
     <div id="sizecontro">
    
         <div class="tool" id="brush3"  style="width: 9vw;margin-left: 9vw;margin-top: 6vh;transform:rotate(10deg);">
-        <div class="toolnumber">1</div>
+        <div class="toolnumber"></div>
         <img style="width: 100%;" src="../image/too2.png">
         <div class="overlay">Brush3</div>
         </div>
@@ -301,16 +312,19 @@
         
 
         <div class="tool" id="brush1"  style="width: 6vw;right: 0.5vw;transform: rotate(-15deg);margin-top: 0vh;">
+            <div class="toolnumber"></div>
             <img style="width: 100%;"  src="../image/too4.png">
             <div class="overlay">Brush1</div>
         </div>
         
         <div class="tool" id="mop1" style="width: 15vw;right: -1vw;bottom: -2vh;">
+            <div class="toolnumber"></div>
             <img style="width: 100%;" src="../image/too5.png">
             <div class="overlay">mop</div>
         </div>
         
         <div class="tool" id="scraper"  style="width: 16vw;left: -5vw;transform: rotate(-50deg);margin-top: 1vh;">
+            <div class="toolnumber"></div>
             <img style="width: 100%;"  src="../image/scraper.png">
             <div class="overlay">scraper</div>
         </div>
