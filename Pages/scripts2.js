@@ -1,4 +1,4 @@
-var startingText = `
+        var startingText = `
         Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware
         `
         var separateLines = startingText.match(/[^\r\n]+/g);
@@ -59,7 +59,7 @@ console.log(bottles);
 
     function preload() {
             // 预加载源图片
-            sourceImg = loadImage('../image/product/2.jpg');
+            sourceImg = loadImage('../image/product/9_4.jpg');
             brush1 = loadImage('../image/brush/bru1.png');
             brush2 = loadImage('../image/brush/brush2.png');
             brush3 = loadImage('../image/brush/brush3.png');
@@ -92,7 +92,7 @@ console.log(bottles);
         image(sourceImg, 0, 0, width, height);
         // 设置默认使用的画笔
         currentBrush = brush1;
-        shapeSize = 10;
+        shapeSize = 30;
     }
 
 

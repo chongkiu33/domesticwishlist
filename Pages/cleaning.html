@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing Tool</title>
+  <style>
+
+    @font-face {
+        font-family: 'tiny280';
+        src: url(../font/TINY5x3-280.otf);
+    }
+
+    #uisystem{
+        position: fixed;
+        margin-top: -2vh;
+        margin-left: 1vw;
+        z-index: 999;
+        padding: 0;
+    }
+
+    body{
+        background-image: url(../image/background4.jpg);
+        background-size:100% 100%;
+        background-attachment:fixed;
+        background-size: cover;
+    }
+
+
+    span:hover{ 
+        text-decoration: underline;
+    }
+
+   
+
+    button{
+    
+        padding: 0.5em;
+        
+        font-size: 1.1em;
+        font-family: American Typewriter, serif;
+
+        backdrop-filter: blur(5px);
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        border-radius: 0.3em;
+        box-shadow: 0 0 15px #5d5c5d;
+        margin-top: 1em;
+    
+    }
+
+    #brushButton{
+        margin-top: 20vh;
+        position: fixed;
+    }
+
+    .tool:hover{
+        scale: 110%;
+    
+    }
+
+
+    .tool:hover .overlay {
+        opacity: 1;
+    }
+
+    #sizecontro{
+        width: 24vw;
+        height: 65vh;
+        backdrop-filter: blur(5px);
+        background: linear-gradient(to right, rgba(238, 238, 238, 0.4) 0%, rgba(255, 255, 122, 0.8) 80%);
+
+        box-shadow: 0 0 15px #5d5c5d;
+        border-radius: 0.3em;
+        position: fixed;
+        right: 1vw;
+        bottom:1vw
+    }
+
+    .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-80%, -50%);
+            color: white;
+            font-size: 1.4vw;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+    }
+
+    .tool{
+        position: absolute;
+        margin: 1vw;
+        transition: filter 0.3s;
+    }
+
+    #submitbutton:hover{
+    scale: 110%;
+    }
+
+    #container{
+        display: flex;
+        align-items: flex-end; 
+        margin-top: 4vh;
+    }
+
+    #productcontainer{
+        display: flex; 
+    }
+
+    #canvas {  
+        box-shadow: 0 0 10px #5d5c5d;
+        border-radius: 0.3em;
+        z-index:1;
+    }
+
+    #canvas-container{
+        float: left;
+        width:fit-content;
+       
+        
+    }
+
+    #blockText{
+        backdrop-filter: blur(5px);
+        background-color: rgb(255,255,255,0.7);
+        width: 21vw;
+        height:fit-content;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        float: left;
+        box-shadow: 0 0 15px #5d5c5d;
+        z-index:2;
+        font-family: American Typewriter, serif;
+ 
+    }
+
+    #controler{
+        width: 18vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* 确保子元素从底部开始排列 */
+        gap: 0.5vh; 
+        
+    }
+
+    #controler > *:not(:last-child) {
+            margin-bottom: 10px; /* 设置元素之间的间隔 */
+    }
+
+    #controler button{
+        background-color: #fff;
+        box-shadow: #5d5c5d 0 0 10px inset;
+        width: 46%;
+        font-size:0.8em;
+        height: 5vh;
+        border-radius: 1em;
+    }
+
+    #currentTool{
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 122, 0.8) 90%);
+        width: 17vw;
+        height: 20vh;
+        border-radius: 1rem;
+        box-shadow: #5d5c5d 0 0 10px inset;
+        font-family: American Typewriter, serif;
+        
+       
+    }
+
+    #currentImage{
+        display: flex;
+        align-items: center; /* 水平居中 */
+        justify-content: center; /* 垂直居中 */
+        height: 20vh;
+    }
+
+    
+.slider {
+  -webkit-appearance: none;
+  width: 110%;
+  margin-left: -5%;
+  bottom: -4vh;
+  height: 14px;
+  border-radius: 1em;
+  background: #fdfafa;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  transform: rotate(-16deg);
+  box-shadow: #5d5c5d 0 0 5px inset;
+  
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 35px;
+  border-radius: 20%;
+  background: #8fb2de;
+  cursor: pointer;
+  box-shadow: #424142 0 0 5px inset;
+}
+
+.slider::-moz-range-thumb {
+  width: 40px;
+  height: 20px;
+  border-radius: 20%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-ms-thumb {
+  width: 20px;
+  height: 60px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+#controlPart{
+    position: fixed;
+    top:20vh;
+    right: 1vw;
+    width: 24vw;
+}
+   
+#sizecontro{
+    width: 24vw;
+    height: 65vh;
+    backdrop-filter: blur(5px);
+    background: linear-gradient(to right, rgba(238, 238, 238, 0.4) 0%, rgba(255, 255, 122, 0.8) 80%);
+    box-shadow: 0 0 15px #5d5c5d;
+    border-radius: 0.3em;
+    position: fixed;
+    right: 1vw;
+    bottom:1vw
+}
+
+#cleanCanvas{
+    z-index: 999;
+}
+
+.toolnumber{
+    font-size: 1em;
+    position: fixed;
+    
+}
+
+  </style>
+</head>
+<body>
+    <div id="uisystem">
+        <a href="../index.html"><button >Homepage</button></a>
+        <a href="wishlist.html"><button>WishList</button></a>
+    </div>
+    
+    <div id="container">
+
+        <div id="controler">
+            <img style="height: 100%;" src="../image/hint.png">
+            <div>
+            <button id="cleanCanvas" onclick="clearCanvas()">Clear Canvas</button>
+            <button id="nextImage" onclick="changeImage()">Next Image</button>
+            </div>
+            <div id="currentTool">
+                <div style="margin: 1vh;position: fixed;">Current Tool</div>
+                <div id="currentImage">
+                <img id="currentToolImage" height="90%" src="../image/scraper.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="productcontainer">
+        <div id="canvas-container">
+            <canvas id="canvas" width="900" height='900'></canvas>
+        </div>
+        <div id="blockText"></div>
+        </div>
+
+    </div>
+
+    <div id="controlPart">
+    <input type="range" min="0" max="10" value="7" class="slider">
+    <img id="submitbutton"style="width: 16vw;margin-left:9vw;" src="../image/submit.png">
+    </div>
+
+    <div id="sizecontro">
+   
+        <div class="tool" id="brush3"  style="width: 9vw;margin-left: 9vw;margin-top: 6vh;transform:rotate(10deg);">
+        <div class="toolnumber">1</div>
+        <img style="width: 100%;" src="../image/too2.png">
+        <div class="overlay">Brush3</div>
+        </div>
+
+        
+
+        <div class="tool" id="brush1"  style="width: 6vw;right: 0.5vw;transform: rotate(-15deg);margin-top: 0vh;">
+            <img style="width: 100%;"  src="../image/too4.png">
+            <div class="overlay">Brush1</div>
+        </div>
+        
+        <div class="tool" id="mop1" style="width: 15vw;right: -1vw;bottom: -2vh;">
+            <img style="width: 100%;" src="../image/too5.png">
+            <div class="overlay">mop</div>
+        </div>
+        
+        <div class="tool" id="scraper"  style="width: 16vw;left: -5vw;transform: rotate(-50deg);margin-top: 1vh;">
+            <img style="width: 100%;"  src="../image/scraper.png">
+            <div class="overlay">scraper</div>
+        </div>
+
+        <div class="tool" id="tower"  style="width: 12vw;margin-left: 0vw;bottom: 4vh;transform: rotate(-40deg);">
+        <img style="width: 100%;" src="../image/too3.png">
+        <div class="overlay">tower</div>
+        </div>
+
+        <div class="tool" id="brush2"  style="width: 6vw;margin-left: 11vw;margin-top: 25vh;transform: rotate(0deg);">
+            <img style="width: 100%;" src="../image/sprayer2.png">
+            <div class="overlay">Sprayer</div>
+        </div>
+
+        <div class="tool" id="sponge"  style="width: 9vw;left: 0vw;bottom: 20vh;transform: rotate(-10deg);">
+            <img style="width: 100%;" src="../image/sponge.png">
+            <div class="overlay">Sponge</div>
+            </div>
+    </div>
+
+    
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+  <script src="../js/tools.js"></script>
+  <script>
+    //字体
+    var startingText = `
+        Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware
+        `
+        var separateLines = startingText.match(/[^\r\n]+/g);
+        var blockTextHTML = '';
+        for(var i = 0; i< separateLines.length; i++){
+            var splitText = separateLines[i].split(' ');
+            for(var j=0; j<splitText.length; j++){
+                blockTextHTML = blockTextHTML + '<span>' + splitText[j] +  ' </span>'
+            }
+            blockTextHTML = blockTextHTML + '<br>'
+ 
+        }
+ 
+        blockText.innerHTML = blockTextHTML;
+
+    //点击改变颜色、字体
+     var spans = document.querySelectorAll('span');
+    var bottlecolor = '#a4c3e7'
+    spans.forEach(function(span){
+    span.addEventListener('click',function(){
+       span.style.color = bottlecolor;
+       span.style.fontFamily = 'tiny280';
+       span.style.fontSize = '15pt';
+       span.style.filter = 'blur(1px)';
+   })
+})
+
+
+   
+
+    //获取画布
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    
+    //添加图像
+    function addImage(src){
+        const image = new Image();
+        image.src = src; 
+
+    
+        image.onload = () => {
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        };
+    }
+    
+    
+    let currentBg='../image/product/2.jpg';
+    
+    window.onload = () => {
+        switchTool("drawing");
+        
+        addImage(currentBg);
+    };
+
+    
+     let isEnabled = false; // 全局变量控制绘画功能
+    
+
+     let currentTool = null; // 当前使用的工具
+    let isDrawingToolEnabled = false; // 当前绘画工具的状态
+    let isSmudgeToolEnabled = false; // 当前模糊工具的状态
+    let isBubbleToolEnabled = false; // 当前气泡工具的状态
+    let isBrushToolEnabled = false; // 笔刷工具状态
+    let isMopBrushEnabled = false; // 拖把刷工具状态
+    let isSliceStrokeEnabled = false; // 新增：sliceStroke工具状态
+    let isSprayToolEnabled = false; // spray工具状态
+
+
+    var currentImage = document.getElementById("currentToolImage");
+    
+    
+
+    document.getElementById("scraper").addEventListener("click", () => switchTool("drawing"));
+    document.getElementById("tower").addEventListener("click", () => switchTool("smudge"));
+    document.getElementById("sponge").addEventListener("click", () => switchTool("bubble"));
+    document.getElementById("brush1").addEventListener("click", () => switchTool("brush"));
+    document.getElementById("mop1").addEventListener("click", () => switchTool("mop")); 
+    document.getElementById("brush3").addEventListener("click", () => switchTool("slice")); 
+    document.getElementById("brush2").addEventListener("click", () => switchTool("spray")); // 新增
+
+
+
+
+
+
+    function saveCanvas() {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'canvas-image.png';
+      link.click();
+    }
+
+    // 绑定点击事件到 submitbutton
+    document.getElementById('submitbutton').addEventListener('click', saveCanvas);
+
+    //清空画布
+    function clearCanvas() {
+        
+        if (currentTool === "bubble") {
+            switchTool("drawing");
+            
+            
+        }
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        addImage(currentBg);
+
+    }
+
+    //换图片
+    const images = ['1_3.png', '1.png', '2_1.png', '2.jpg', '3_4.png', '3.png', '4_3.png', '4.png', '5_2.jpg', '5_3.jpg','5.jpg','6_2.png','6_3.png','6.jpg','7_2.jpg','7.PNG','8_2.jpg','8.JPG','9_4.jpg','9.png','10_3.jpg','10.png','12_2.png','12_3.png'];
+    function changeImage(){
+        const imageIndex=Math.floor(Math.random() * images.length);
+        currentBg = '../image/product/' + images[imageIndex];
+
+        clearCanvas();
+        const bubbleCanvas = document.getElementById("bubbleCanvas");
+        if (bubbleCanvas) {
+            context.drawImage(bubbleCanvas, 0, 0);
+            document.body.removeChild(bubbleCanvas);
+        }
+    }
+    
+  </script>
+</body>
+</html>
