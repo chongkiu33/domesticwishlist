@@ -385,11 +385,13 @@
     
     
     let currentBg='../image/product/2.jpg';
+   
     
     window.onload = () => {
         switchTool("drawing");
-        
         addImage('../image/product/2.jpg');
+        canvas.width =window.innerHeight*0.96;
+        canvas.height = window.innerHeight*0.96;
     };
 
     
