@@ -41,13 +41,17 @@
         font-family: American Typewriter, serif;
 
         backdrop-filter: blur(5px);
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.9);
         border: none;
-        border-radius: 0.3em;
-        box-shadow: 0 0 15px #5d5c5d;
+        border-radius: 0.4em;
+        box-shadow: 0 0 7px #ff0080 inset;
         margin-top: 1em;
     
     }
+    button:hover{
+    transform: translateY(1.5vw);
+    transition: 1s;
+}
 
     #brushButton{
         margin-top: 20vh;
@@ -354,7 +358,8 @@
     var startingText = `
         Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware
         `
-        var separateLines = startingText.match(/[^\r\n]+/g);
+    function spantext(texblock){
+        var separateLines = texblock.match(/[^\r\n]+/g);
         var blockTextHTML = '';
         for(var i = 0; i< separateLines.length; i++){
             var splitText = separateLines[i].split(' ');
@@ -366,6 +371,9 @@
         }
  
         blockText.innerHTML = blockTextHTML;
+    }
+
+    spantext(startingText);
 
     //点击改变颜色、字体
      var spans = document.querySelectorAll('span');
@@ -465,9 +473,44 @@
 
     //换图片
     const images = ['1_3.png', '1.png', '2_1.png', '2.jpg', '3_4.png', '3.png', '4_3.png', '4.png', '5_2.jpg', '5_3.jpg','5.JPG','6_2.png','6_3.png','6.jpg','7_2.jpg','7.PNG','8_2.jpg','8.JPG','9_4.jpg','9.png','10_3.jpg','10.PNG','12_2.png','12_3.png'];
+    const words = [
+    'NA Heart-Shaped Rice Cooker, Home Smart Appointment Kitchen Rice Cooker, Suitable for 1-3 People, Hot Rice, Porridge, Soup, Yogurt, Cakes(Pink)',
+    'Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware',
+    'VENTDOUCE Cute Cleaning Supplies - Cleaner Kitchen Washing Brush Chopsticks Cutlery Cleaning Brush | U-Shaped Bear Design Cleaning Tools for Cutlery, Chopsticks, Spoons',
+    'Kawaii Digital Scale Kawaii Kitchen Accessories Kawaii Gifts Pink Kitchen Supplies Cute Kitchen Appliance (pink)',
+    'Cute Strawberry Shaped Kitchen Colander Drain Basket',
+    'KAWAII BUNNY RABBIT STAND UP RICE SHOVEL SPON',
+    'Cute Silicone Cat Paw Shaped Ice Cube / Chocolate tray mold',
+    'Vax Air Lift Pet Upright Vacuum Cleaner; Easily converts to a portable, lift out vacuum; Steerable Technology; Pet Tool - UCPESHV1, 1.5 Litre, 850W, Black, Blue, Grey',
+    'TANCUDER 2 Pack Microwave Cleaner Angry Mama Microwave Oven Steam Cleaner Remover Cool Mama Fridge Deodoriser Absorber Kitchen Cleaner Tool, Easily Clean Crud in Minutes Disinfects with Vinegar Water',
+    'TANCUDER 2 Pack Microwave Cleaner Angry Mama Microwave Oven Steam Cleaner Remover Cool Mama Fridge Deodoriser Absorber Kitchen Cleaner Tool, Easily Clean Crud in Minutes Disinfects with Vinegar Water',
+    'Jen kitchen good wife hood household exhaust hood large suction suction kitchen top side double suction range hoods',
+    'H2O HD Steam Mop and Handheld Steam Cleaner – for Floors, Carpets, Windows, Upholstery, Kitchens & Bathrooms',
+    'H2O HD Steam Mop and Handheld Steam Cleaner – for Floors, Carpets, Windows, Upholstery, Kitchens & Bathrooms',
+    'Vacuum cleaner household large suction wireless handheld ultra-quiet carpet pet cat hair mite suction mop all-in-one vacuum cleaner',
+    'Neoflam Ceramic Nonstick Heart-Shaped Egg Pan, Pink',
+    'The cloud whale J4 intelligent sweeping and mopping all-in-one sweeper big suction does not entangle the hair and light dust collection.',
+    'Super Soft 5 Layer Turbo Ironing Board Covers 125 x 45 cm - 50% faster with High Speed Steam Reflection, Made in EU, 100% Cotton Top, 122 x 38, 5 sizes, XL for Dimensions 120-125 x 38-45 cm',
+    'Dyson Dyson V11 Fluffy Cordless Vacuum Cleaner Large Household Large Suction Mite Removal Home',
+    'CARE + PROTECT Iron Liquid De-scaler, Removes deposits on the soleplate, Improves performance and Makes Ironing Easier, 12x Single doses, White',
+    'Oxy wireless vacuum cleaner home large suction super strong small handheld sweeping suction mopping all-in-one machine cat fur',
+    'Vanish Gold Oxi Action Laundry Booster and Stain Remover Powder for Whites 2.4kg, Removes Tough Stains Even at 20°, For Whiter Whites, Safe on Everyday Fabrics (Packaging May Vary) (Pack of 1)',
+    'Philips vacuum cleaner household small powerful large suction horizontal handheld vacuum cleaner wired flagship store XB2022',
+    'Vac N Fresh Hoover Bag Fresheners, 5 Pack - Scented Vacuum Cleaner Smellies- For Bagless as well as Regular Vacuum Cleaners - Card Shaped Vac Deodoriser Discs for Pet Lovers',
+    'Vac N Fresh Hoover Bag Fresheners, 5 Pack - Scented Vacuum Cleaner Smellies- For Bagless as well as Regular Vacuum Cleaners - Card Shaped Vac Deodoriser Discs for Pet Lovers'
+
+
+
+
+
+
+
+
+    ];
     function changeImage(){
         const imageIndex=Math.floor(Math.random() * images.length);
         currentBg = '../image/product/' + images[imageIndex];
+        spantext(words[imageIndex]);
 
         clearCanvas();
         const bubbleCanvas = document.getElementById("bubbleCanvas");
