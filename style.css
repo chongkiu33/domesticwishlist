@@ -39,10 +39,10 @@ button{
     font-family: American Typewriter, serif;
 
     backdrop-filter: blur(5px);
-    background-color: rgba(252, 252, 252, 0.3);
+    background-color: rgba(252, 252, 252, 0.7);
     border: none;
     border-radius: 0.3em;
-    box-shadow: 0 0 15px #5d5c5d;
+    box-shadow: 0 0 8px #5d5c5d inset;
     
 }
 
@@ -76,19 +76,16 @@ button:hover{
     font-family: American Typewriter, serif;
     text-align: center;
     font-size: 1.4vmin;
-    
-    
+   
 }
 
 #instrutext{
     position: absolute;
     column-count: 2;
     background-image: url(image/book.png);
-    background-size:100% 100%;
-    
+    background-size:100% 100%;    
     width: 100%;
     height: 100%;
-    
 }
 
 
@@ -134,11 +131,23 @@ button:hover{
     animation: opacitychange 5s infinite;
 }
 
+#shuilongtou{
+    animation: movex 8s infinite;
+}
+
 #toolkit{
     width: 20vw;
     margin-top: 50vh;
     margin-left: 8vw;
     animation: movex 11s infinite;
+}
+
+#wishlist1{
+    animation: movey 11s infinite;
+}
+
+#wishlist2{
+    animation: movey 9s infinite;
 }
 
 @keyframes movey{
