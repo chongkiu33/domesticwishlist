@@ -107,6 +107,9 @@ button:hover{
     font-family: American Typewriter, serif;
     overflow: scroll;
     
+    margin-top: 50%;
+    display: flex;
+    
 }
 
 #tool6{
