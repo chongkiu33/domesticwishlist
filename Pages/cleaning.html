@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drawing Tool</title>
-  <link rel="icon" href="image/icon.png">
+  <link rel="icon" href="../image/icon.png">
   <style>
 
     @font-face {
@@ -357,7 +357,7 @@
   <script>
     //字体
     var startingText = `
-        Kawaii Strawberry Hearts Bowl Cute Ceramic Noodle Fruit Breakfast Salad Rice Dessert Decorative Bowl Korean Kitchen Tableware
+        Kawaii Digital Scale Kawaii Kitchen Accessories Kawaii Gifts Pink Kitchen Supplies Cute Kitchen Appliance (pink)
         `
     function spantext(texblock){
         var separateLines = texblock.match(/[^\r\n]+/g);
@@ -377,7 +377,7 @@
     spantext(startingText);
 
     //点击改变颜色、字体
-     var spans = document.querySelectorAll('span');
+    var spans = document.querySelectorAll('span');
     var bottlecolor = '#a4c3e7'
     spans.forEach(function(span){
     span.addEventListener('click',function(){
@@ -413,7 +413,7 @@
     
     window.onload = () => {
         switchTool("drawing");
-        addImage('../image/product/9_4.jpg');
+        addImage('../image/product/2.jpg');
         canvas.width =window.innerHeight*0.96;
         canvas.height = window.innerHeight*0.96;
     };
@@ -512,6 +512,14 @@
         const imageIndex=Math.floor(Math.random() * images.length);
         currentBg = '../image/product/' + images[imageIndex];
         spantext(words[imageIndex]);
+        spans.forEach(function(span){
+    span.addEventListener('click',function(){
+       span.style.color = bottlecolor;
+       span.style.fontFamily = 'tiny280';
+       span.style.fontSize = '15pt';
+       span.style.filter = 'blur(1px)';
+   })
+})
 
         clearCanvas();
         const bubbleCanvas = document.getElementById("bubbleCanvas");
