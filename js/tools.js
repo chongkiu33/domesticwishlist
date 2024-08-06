@@ -51,26 +51,26 @@ function getToolHandlers(tool) {
 function enableTool(tool) {
     if (tool === "drawing") {
         isDrawingToolEnabled = true;
-        currentImage.src='../image/scraper.png';
+        currentImage.src='image/scraper.png';
     } else if (tool === "smudge") {
         isSmudgeToolEnabled = true;
-        currentImage.src='../image/too3.png';
+        currentImage.src='image/too3.png';
         currentImage.style.scale = 0.9;
     } else if (tool === "bubble") {
         isBubbleToolEnabled = true;
-        currentImage.src='../image/sponge.png';
+        currentImage.src='image/sponge.png';
     } else if (tool === "brush") {
         isBrushToolEnabled = true;
-        currentImage.src='../image/too4.png';
+        currentImage.src='image/too4.png';
     } else if (tool === "mop") {
         isMopBrushEnabled = true;
-        currentImage.src='../image/too5.png';
+        currentImage.src='image/too5.png';
     } else if (tool === "slice") {
         isSliceStrokeEnabled = true;
-        currentImage.src='../image/too2.png';
+        currentImage.src='image/too2.png';
     } else if (tool === "spray") { // 新增
         isSprayToolEnabled = true; // 新增
-        currentImage.src='../image/sprayer2.png';
+        currentImage.src='image/sprayer2.png';
     }
     const toolHandlers = getToolHandlers(tool);
     if (toolHandlers) {
@@ -112,19 +112,19 @@ function removeToolEventListeners(toolHandlers) {
 
 function updateCursorForTool(tool) {
     if (tool === "drawing") {
-        updateCursor(0, '../image/scraper.png', 1.5, 2.0, 0.9, 80);
+        updateCursor(0, 'image/scraper.png', 1.5, 2.0, 0.9, 80);
     } else if (tool === "smudge") {
-        updateCursor(0, '../image/cloth.png', 1, 2, 0.5, 80);
+        updateCursor(0, 'image/cloth.png', 1, 2, 0.5, 80);
     } else if (tool === "bubble") {
-        updateCursor(0, '../image/sponge.png', 1, 2, 0.5, 80);
+        updateCursor(0, 'image/sponge.png', 1, 2, 0.5, 80);
     } else if (tool === "brush") {
-        updateCursor(0, '../image/brush.png', 1, 2, 0.5, 80); // 假设有一个brush.png的光标图像
+        updateCursor(0, 'image/brush.png', 1, 2, 0.5, 80); // 假设有一个brush.png的光标图像
     } else if (tool === "mop") {
-        updateCursor(0, '../image/mop.png', 1, 2, 0.5, 80); // 假设有一个mop.png的光标图像
+        updateCursor(0, 'image/mop.png', 1, 2, 0.5, 80); // 假设有一个mop.png的光标图像
     } else if (tool === "slice") {
-        updateCursor(0, '../image/slice.png', 1, 2, 0.5, 80); // 假设有一个slice.png的光标图像
+        updateCursor(0, 'image/slice.png', 1, 2, 0.5, 80); // 假设有一个slice.png的光标图像
     } else if (tool === "spray") { // 新增
-        updateCursor(0, '../image/spray.png', 1, 2, 0.5, 80); // 假设有一个spray.png的光标图像
+        updateCursor(0, 'image/spray.png', 1, 2, 0.5, 80); // 假设有一个spray.png的光标图像
     }
 }
 
@@ -389,7 +389,7 @@ function initializeDrawingTool() {
 
 
 function initializeSmudgeTool() {
-    updateCursor(0, '../image/cloth.png', 1, 2, 0.5, 80);
+    updateCursor(0, 'image/cloth.png', 1, 2, 0.5, 80);
     //const context = canvas.getContext("2d");
     const bs = 64; // 笔刷大小
     const bsh = bs / 2; // 笔刷大小的一半
@@ -486,7 +486,7 @@ function initializeSmudgeTool() {
 }
 
 function bubble() {
-    updateCursor(0, '../image/sponge.png', 1, 2, 0.5, 80);
+    updateCursor(0, 'image/sponge.png', 1, 2, 0.5, 80);
     const particleArray = [];
     let isDrawing = false; // Flag to check if the mouse is pressed
     const bubbleCanvas = document.createElement('canvas');
@@ -625,10 +625,10 @@ function bubble() {
 }
 
 function strokeBrush() {
-    updateCursor(0, '../image/too4.png', 1, 2, 0.5, 80);
+    updateCursor(0, 'image/too4.png', 1, 2, 0.5, 80);
 
     var img = new Image();
-    img.src = '../image/strokebrush.png';
+    img.src = 'image/strokebrush.png';
     img.width = 10;
 
     function distanceBetween(point1, point2) {
@@ -740,7 +740,7 @@ function mopbrush() {
 }
 
 function sliceStroke(offset) {
-    updateCursor(0, '../image/slice.png', 1, 2, 0.5, 80);
+    updateCursor(0, 'image/slice.png', 1, 2, 0.5, 80);
 
     context.lineWidth = 5;
     context.lineJoin = context.lineCap = 'round';
