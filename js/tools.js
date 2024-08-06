@@ -356,7 +356,7 @@ function initializeDrawingTool() {
     canvas.addEventListener("mouseenter", mouseEnter, false);
 
     const cursorImage = new Image();
-    cursorImage.src = 'image/scraper.png';
+    cursorImage.src = '../image/scraper.png';
     const updateCursor = (angle) => {
         const cursorCanvas = document.createElement('canvas');
         const cursorContext = cursorCanvas.getContext('2d');
