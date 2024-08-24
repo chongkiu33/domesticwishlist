@@ -170,10 +170,12 @@
                   alert("Image uploaded successfully");
                   loading.style.display = "none"; // 显示加载状态
                   canvas.classList.remove("lookblur"); 
+                  clearCanvas(); 
                 }).catch((error) => {
                   console.error("Error storing description:", error);
                   loading.style.display = "none"; // 显示加载状态
                   canvas.classList.remove("lookblur"); 
+                  clearCanvas(); 
                 });
               });
           }
