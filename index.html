@@ -120,6 +120,10 @@
     const loading = document.getElementById("loading");
 
     const uploadCanvasImage = () => {
+
+        if (currentTool === "bubble") {
+            switchTool("drawing");           
+        }
         loading.style.display = "block"; // 显示加载状态
         canvas.classList.add("lookblur"); 
         const descriText = description.innerHTML;
